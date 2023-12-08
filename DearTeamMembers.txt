@@ -3,3 +3,17 @@ I also didnt look at anything on the asignment
 
 If someone wants to write tests, and we can summit them for cottrells assignment. dunno if thats acceptable but its a possablity. we obv dont have to do it.
 
+
+Amir - make the form page To let people register (Step 1 of Specific Requirements)
+
+Joe - take a profile Page where they can View and edit all this information
+
+Enzo - Make Home Page ( Contain an easy way to enter food eaten, an Indicator of how many calories can consume for the rest of the day, and weight loss to this point) I (Dylan) can help with Ui I think this page should also have a place to log your weight loss or weight gain.
+
+Dylan - Make the Database that will hold all this content.
+
+
+If anyone objects to this Make proposals below, also if you wanna just get started, use placeholder Values until I actually set up the database
+
+
+!! Someone needs to choose a challenge. I don't think that the first challenges is too hard, We could just use a progress bar.!!
