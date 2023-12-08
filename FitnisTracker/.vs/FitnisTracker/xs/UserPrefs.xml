@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{1C8FEF96-2F05-4ACC-AF7A-AB02E4928269}|https">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FitnisTracker" expanded="True" selected="True">
+            <Node name="FitnisTracker" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.FitnisTests FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.FitnisTracker FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
