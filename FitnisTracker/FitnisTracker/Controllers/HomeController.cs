@@ -13,10 +13,25 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+
     public IActionResult Index()
     {
         return View();
     }
+    public IActionResult Registration()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Registration(UserModel user)
+    {
+        if(!ModelState.IsValid)
+        {
+            return View(user);
+        }
+        return View("RegiResponse", user);
+    }
+   
 
     public IActionResult Privacy()
     {
@@ -26,7 +41,7 @@ public class HomeController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
 

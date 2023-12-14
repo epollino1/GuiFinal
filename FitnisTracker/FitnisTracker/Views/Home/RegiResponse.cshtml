@@ -1,0 +1,42 @@
+﻿@model FitnisTracker.Models.UserModel
+
+@{
+    ViewData["Title"] = "Registration Response";
+}
+
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Registration Response</h3>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <p><strong>Name:</strong> @Model.Name</p>
+                            <p><strong>Email:</strong> @Model.Email</p>
+                            <p><strong>Current Weight:</strong> @Model.CurrentWeight</p>
+                            <p><strong>Desired Weight:</strong> @Model.DesiredWeight</p>
+                            <p><strong>Height:</strong> @Model.Height_In inches</p>
+                            <p><strong>Gender:</strong> @Model.Gender</p>
+                            <p><strong>Activity Level:</strong> @Model.ActivityLevel</p>
+                            <p><strong>Birthday:</strong> @Model.Birthday.ToShortDateString()</p>
+                            <p><strong>Age:</strong> @Model.Age</p>
+                            <p><strong>Calorie Limit:</strong> @Model.CalorieLimit</p>
+                            <!-- Add other properties as needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>
