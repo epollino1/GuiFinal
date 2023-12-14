@@ -11,27 +11,23 @@ CREATE TABLE IF NOT EXISTS Users (
 	age INTEGER,
 	CalorieLimit INTEGER,
 	activity Text check(activity in ('bmr', 'sedentary', 'light', 'moderate', 'active', 'veryactive', 'extraactive')),
-
 	FOREIGN KEY (UserID) REFERENCES aspNetUsers(Id)
 );
 
-
 Create Table IF Not Exists CaloryLog (
-	id INTEGER AUTOINCREMENT,
+	id INTEGER AUTO INCREMENT,
 	UserID text,
 	logged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	Title text,
 	Calories INTEGER,
-
 	FOREIGN KEY (UserID) REFERENCES aspNetUsers(Id)
 );
 
 Create Table if not exists WeightLog (
-	id INTEGER AUTOINCREMENT,
+	id INTEGER AUTO INCREMENT,
 	UserID text,
 	logged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	currentWeight REAL,
-
 	FOREIGN KEY (UserID) REFERENCES aspNetUsers(Id)
 );
 
