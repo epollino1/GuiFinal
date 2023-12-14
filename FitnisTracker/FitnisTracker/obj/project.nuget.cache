@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4MY+uT63mekA8c0nTqCynjt805zrAFjkV1bDmyS89vqMwO4Fuof7UELsBt9Q6rx4YEVjc5l51vxjnVUUvqHG6g==",
+  "dgSpecHash": "IkqgFb4lVKc3Gurt4n5Pez7EBIcF4YaQb8GAs0Fz8dzvepyGO/2lvhw9g/ukGywa0GGuDo0+vHp4LcdQlch0gg==",
   "success": true,
   "projectFilePath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj",
   "expectedPackageFiles": [
@@ -41,7 +41,10 @@
     "/Users/dylan_sacco/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/Users/dylan_sacco/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/dylan_sacco/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/Users/dylan_sacco/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
+    "/Users/dylan_sacco/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
+    "/Users/dylan_sacco/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/dylan_sacco/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/dylan_sacco/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.14/microsoft.netcore.app.host.osx-arm64.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

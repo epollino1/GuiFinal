@@ -1,7 +1,7 @@
 ﻿using System;
 namespace FitnisTracker.Models
 {
-    public enum Activity
+    public enum FitnisActivity
     {
         BasalMetabolicRate, //(BMR)
         Sedentary, // little or no exercise
@@ -19,7 +19,7 @@ namespace FitnisTracker.Models
 		public double DesiredWeight { get; private set; }
 		public double Height_In { get; private set; }
 		public String Gender { get; private set; }
-		public Activity ActivityLevel { get; private set; } 
+		public FitnisActivity ActivityLevel { get; private set; } 
 		public DateTime Birthday { get; private set; }
 		public int Age { get; } // this will be calculated not requested
 		public int CalorieLimit { get; private set; }
@@ -29,7 +29,9 @@ namespace FitnisTracker.Models
 
         public UserModel()
 		{
-
+			Gender = "";
+			Name = "";
+			Email = "";
 		}
 	}
 }
