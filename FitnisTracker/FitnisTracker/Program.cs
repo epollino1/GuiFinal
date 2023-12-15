@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using FitnisTracker.Data;
+using FitnisTracker.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 
 var fitnisConnectionString = builder.Configuration.GetConnectionString("FitnisConnection") ?? throw new InvalidOperationException("Connection string 'FitnisConnection' not found.");
+builder.Services.AddDbContext<FitnisContext>(options =>
+    options.UseSqlite(fitnisConnectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
