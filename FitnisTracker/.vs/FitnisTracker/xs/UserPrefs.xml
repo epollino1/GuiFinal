@@ -1,30 +1,40 @@
 ﻿<Properties StartupConfiguration="{1C8FEF96-2F05-4ACC-AF7A-AB02E4928269}|https">
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FitnisTracker/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FitnisTracker/Views/Home/RegiResponse.cshtml">
     <Files>
-      <File FileName="FitnisTests/UnitTest1.cs" Line="32" Column="1" />
-      <File FileName="FitnisTracker/Models/UserModel.cs" Line="6" Column="27" />
-      <File FileName="FitnisTracker/Program.cs" Line="12" Column="63" />
-      <File FileName="FitnisTracker/appsettings.json" Line="4" Column="22" />
-      <File FileName="FitnisTracker/Data/ApplicationDbContext.cs" Line="11" Column="1" />
-      <File FileName="FitnisTracker/Controllers/HomeController.cs" Line="28" Column="6" />
-      <File FileName="FitnisTracker/Models/UserModel (another copy).cs" Line="30" Column="6" />
-      <File FileName="FitnisTracker/Data/Migrations/ApplicationDbContextModelSnapshot.cs" Line="1" Column="1" />
-      <File FileName="FitnisTracker/Data/Migrations/20231214185642_InitialMigration.cs" Line="1" Column="1" />
-      <File FileName="FitnisTracker/Data/Migrations/20231214185642_InitialMigration.Designer.cs" Line="1" Column="1" />
-      <File FileName="FitnisTracker/app.db" />
+      <File FileName="FitnisTracker/Models/UserModel.cs" Line="15" Column="67" />
+      <File FileName="FitnisTracker/Views/Home/Registration.cshtml" Line="60" Column="95" />
+      <File FileName="FitnisTracker/Controllers/UserController.cs" Line="1" Column="1" />
+      <File FileName="FitnisTracker/Controllers/WeightLogController.cs" Line="14" Column="37" />
+      <File FileName="FitnisTracker/Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="FitnisTracker/Views/Home/RegiResponse.cshtml" Line="1" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FitnisTracker" selected="True" />
+          <Node name="FitnisTracker" expanded="True">
+            <Node name="FitnisTests" expanded="True" />
+            <Node name="FitnisTracker">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="Areas" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views">
+                <Node name="Home" expanded="True">
+                  <Node name="RegiResponse.cshtml" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.FitnisTests FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.FitnisTracker FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.FitnisTracker PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

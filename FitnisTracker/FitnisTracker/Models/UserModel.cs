@@ -1,6 +1,20 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace FitnisTracker.Models
 {
+
+    public enum FitnisActivity
+    {
+        BasalMetabolicRate, //(BMR)
+        Sedentary, // little or no exercise
+        Light, // exercise 1-3 times/week
+        Moderate, // exercise 4-5 times/week
+        Active, // daily exercise or intense exercise 3-4 times/week
+        VeryActive,// intense exercise 6-7 times/week
+        ExtraActive// very intense exercise daily, or physical job
+
+    }
     public class UserModel
     {
         [Required]
@@ -16,7 +30,7 @@ namespace FitnisTracker.Models
         public string Gender { get; set; }
 
         [Required]
-        public Activity ActivityLevel { get; set; }
+        public String ActivityLevel { get; set; }
 
         [Required]
         public DateTime Birthday { get; set; }

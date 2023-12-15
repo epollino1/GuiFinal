@@ -55,7 +55,7 @@
                                 <label asp-for="ActivityLevel" class="control-label">Activity Level</label>
                                 <select asp-for="ActivityLevel" class="form-control">
                                     <option value="Empty">Select Activity Level</option>
-                                    @foreach (var activityLevel in Enum.GetValues(typeof(FitnisTracker.Models.Activity)))
+                                    @foreach (var activityLevel in Enum.GetValues(typeof(FitnisTracker.Models.FitnisActivity)))
                                     {
                                         <option value="@activityLevel">@activityLevel</option>
                                     }
