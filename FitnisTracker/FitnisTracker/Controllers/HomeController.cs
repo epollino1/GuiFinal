@@ -20,6 +20,10 @@ public class HomeController : Controller
     }
     public IActionResult HomePage()
     {
+        if (User.Identity.IsAuthenticated)
+        {
+            return RedirectToAction("LoggedHome", "CaloryLog");
+        }
         return View();
     }
     public IActionResult Registration()
