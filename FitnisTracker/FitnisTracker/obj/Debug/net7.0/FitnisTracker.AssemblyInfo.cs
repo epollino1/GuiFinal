@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-FitnisTracker-9b20addf-be55-4e18-8bf7-acc6ad4ce1c7")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("FitnisTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
