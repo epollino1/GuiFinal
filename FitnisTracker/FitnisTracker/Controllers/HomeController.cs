@@ -18,10 +18,6 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult HomePage()
-    {
-        return View("HomePage");
-    }
     public IActionResult Registration()
     {
         return View();

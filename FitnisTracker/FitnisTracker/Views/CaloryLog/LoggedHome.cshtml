@@ -1,0 +1,68 @@
+﻿@model FitnisTracker.Models.CaloryLog
+
+@{
+    ViewData["Title"] = "Log Food";
+    Layout = "_Layout";
+}
+
+<h1>Log Food</h1>
+
+<form id="foodLogForm" asp-action="Create" data-url="@Url.Action("Create")">
+    <div class="form-group">
+        <label asp-for="LoggedAt"></label>
+        <input asp-for="LoggedAt" class="form-control" type="datetime-local" />
+        <span asp-validation-for="LoggedAt" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Calories"></label>
+        <input asp-for="Calories" class="form-control" type="number" />
+        <span asp-validation-for="Calories" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.UserId"></label>
+        <input asp-for="User.UserId" class="form-control" />
+        <span asp-validation-for="User.UserId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="button" id="submitBtn" class="btn btn-primary">Log Food</button>
+    </div>
+</form>
+
+<div id="totalProgress">
+    <!-- Display the total progress here -->
+</div>
+
+@section scripts {
+    <script>// JavaScript to handle form submission with AJAX
+        document.getElementById('submitBtn').addEventListener('click', function () {
+            var form = document.getElementById('foodLogForm');
+            var url = form.getAttribute('data-url');
+
+            // Serialize form data
+            var formData = new FormData(form);
+
+            // Submit data using AJAX
+            fetch(url, {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Update total progress on the page
+                    document.getElementById('totalProgress').innerHTML = 'Total Progress: ' + data.totalProgress;
+
+                    // Reset the form
+                    form.reset();
+                })
+                .catch(error => console.error('Error:', error));
+        });</script>
+}
