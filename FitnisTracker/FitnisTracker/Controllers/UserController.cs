@@ -15,11 +15,13 @@ namespace FitnisTracker.Controllers
     {
         private readonly FitnisContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController(FitnisContext context, UserManager<IdentityUser> userManager)
+        public UserController(FitnisContext context, UserManager<IdentityUser> userManager, ILogger<UserController> logger)
         {
             _context = context;
             _userManager = userManager;
+            _logger = logger;
         }
 
         // GET: User
@@ -75,16 +77,28 @@ namespace FitnisTracker.Controllers
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(IdentityUser account)
         { 
-            var id = await _userManager.GetUserIdAsync(account);
+            //var id = await _userManager.GetUserIdAsync(account);
+            //var email = await _userManager.GetEmailAsync(account);
+            string userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
 
-            if (id == null || _context.Users == null)
+
+            //_logger.Log(LogLevel.Information, "ID: {id}", id);
+            _logger.Log(LogLevel.Information, "Email: {userEmail}", userEmail);
+            //_logger.Log(LogLevel.Information, "Context: {_context.Users}", _context.Users);
+
+            if (_context.Users == null || userEmail == null)
             {
+                _logger.Log(LogLevel.Error, "something is null");
                 return NotFound();
             }
 
-            var user = await _context.Users.FindAsync(id);
+            //var user = await _context.Users.FindAsync(id);
+            //var user = await _context.Users.FindAsync(userEmail);
+            User user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+
             if (user == null)
             {
+                _logger.LogError("No user found");
                 return NotFound();
             }
             return View(user);
