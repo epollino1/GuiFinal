@@ -31,7 +31,6 @@ namespace FitnisTracker.Controllers
 
 
         }
-        
 
         // GET: User/Details/5
         public async Task<IActionResult> Details(string id)
@@ -68,7 +67,7 @@ namespace FitnisTracker.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return View("RegiResponse", user);
+                return RedirectToAction(nameof(Index));
             }
             return View(user);
         }
