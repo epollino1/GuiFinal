@@ -9,117 +9,125 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FitnisTracker
 build_property.RootNamespace = FitnisTracker
-build_property.ProjectDir = /Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/
+build_property.ProjectDir = /Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker
+build_property.MSBuildProjectDirectory = /Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Areas/Identity/Pages/_ViewStart.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Create.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2Fsb3J5TG9nL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Delete.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2Fsb3J5TG9nL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Details.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2Fsb3J5TG9nL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Edit.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2Fsb3J5TG9nL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Index.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/CaloryLog/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2Fsb3J5TG9nL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/Index.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/HomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Ib21lUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/Privacy.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/RegiResponse.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/RegiResponse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9SZWdpUmVzcG9uc2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/Registration.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Home/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9SZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/Error.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/_LoginPartial.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Create.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Delete.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Details.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Edit.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Index.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+<<<<<<< Updated upstream
 [/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/UserHome/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlckhvbWUvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Create.cshtml]
+=======
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Create.cshtml]
+>>>>>>> Stashed changes
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV2VpZ2h0TG9nL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Delete.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV2VpZ2h0TG9nL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Details.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV2VpZ2h0TG9nL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Edit.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV2VpZ2h0TG9nL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Index.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/WeightLog/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvV2VpZ2h0TG9nL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/_ViewImports.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/_ViewStart.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/enzopollino/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/_Layout.cshtml]
+[/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ou2d93204j
