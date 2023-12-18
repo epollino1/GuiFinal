@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FitnisTracker.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace FitnisTracker.Controllers
 {
     public class UserController : Controller
     {
         private readonly FitnisContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UserController(FitnisContext context)
+        public UserController(FitnisContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: User
@@ -69,8 +73,10 @@ namespace FitnisTracker.Controllers
         }
 
         // GET: User/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
+        public async Task<IActionResult> Edit(IdentityUser account)
+        { 
+            var id = await _userManager.GetUserIdAsync(account);
+
             if (id == null || _context.Users == null)
             {
                 return NotFound();
