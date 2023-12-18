@@ -17,13 +17,17 @@ namespace FitnisTracker.Controllers
         {
             _context = context;
         }
-
+        public IActionResult LoggedHome()
+        {
+            return View("LoggedHome");
+        }
         // GET: CaloryLog
         public async Task<IActionResult> Index()
         {
             var fitnisContext = _context.CaloryLogs.Include(c => c.User);
             return View(await fitnisContext.ToListAsync());
         }
+
 
         // GET: CaloryLog/Details/5
         public async Task<IActionResult> Details(long? id)
