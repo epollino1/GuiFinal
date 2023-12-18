@@ -10,7 +10,7 @@ public partial class CaloryLog
     public string? UserId { get; set; }
 
     public byte[]? LoggedAt { get; set; }
-
+     
     public string? Title { get; set; }
 
     public long? Calories { get; set; }
