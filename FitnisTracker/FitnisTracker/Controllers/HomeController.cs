@@ -18,15 +18,6 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult HomePage()
-    {
-        if (User.Identity.IsAuthenticated)
-        {
-            return RedirectToAction("LoggedHome", "CaloryLog");
-        }
-
-        return View("HomePage");
-    }
     public IActionResult Registration()
     {
         return View();
