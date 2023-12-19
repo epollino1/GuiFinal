@@ -8,9 +8,37 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FitnisTracker.styles.css" asp-append-version="true" />
 </head>
+
+<style>
+    *:not( .progress-bar, .progress, nav *, hr, br ) {
+        padding-bottom: 0.5rem;
+    }
+
+    .outline {
+        border: solid;
+        border-radius: 9px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background-color: #0005;
+    }
+
+        .outline > h2,
+        .outline p,
+        .outline label {
+            /*        color: transparent;*/
+            /*        filter: invert(100%);*/
+        }
+
+    body {
+        background-color: #79c;
+    }
+</style>
+
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="HomePage">FitnisTracker</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -21,20 +49,30 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Registration">Registration</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Registration">Registration</a>
                         </li>
                         
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+<<<<<<< Updated upstream
                         @if(User.Identity.IsAuthenticated){
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Edit">Profile</a>
                             </li>
                         }
                         
+=======
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="" asp-controller="User" asp-action="Edit">Profile</a>
+                        </li>
+>>>>>>> Stashed changes
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
