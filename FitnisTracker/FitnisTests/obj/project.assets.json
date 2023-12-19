@@ -12850,40 +12850,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joey\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/dylan_sacco/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj",
+      "projectUniqueName": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/FitnisTests.csproj",
       "projectName": "FitnisTests",
-      "projectPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj",
-      "packagesPath": "C:\\Users\\Joey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\obj\\",
+      "projectPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/FitnisTests.csproj",
+      "packagesPath": "/Users/dylan_sacco/.nuget/packages/",
+      "outputPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Joey\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/dylan_sacco/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
+        "/Users/dylan_sacco/NugetCustom": {},
+        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj": {
-              "projectPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj"
+            "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj": {
+              "projectPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj"
             }
           }
         }
@@ -12935,16 +12929,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.403/RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
