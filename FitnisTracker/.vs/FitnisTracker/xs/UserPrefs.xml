@@ -1,24 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FitnisTracker/Views/Shared/_Layout.cshtml">
-    <Files>
-      <File FileName="FitnisTracker/Views/Shared/_Layout.cshtml" Line="15" Column="6" />
-      <File FileName="FitnisTracker/Views/Home/Index.cshtml" />
-      <File FileName="FitnisTracker/Views/Shared/_LoginPartial.cshtml" />
-      <File FileName="FitnisTracker/Views/Home/HomePage.cshtml" />
-    </Files>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FitnisTracker" selected="True" />
+          <Node name="FitnisTracker" expanded="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.FitnisTests PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
