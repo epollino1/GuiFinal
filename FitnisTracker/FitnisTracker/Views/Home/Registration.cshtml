@@ -23,32 +23,15 @@
                             <!--Current Weight-->
                             <div class="form-group">
                                 <label asp-for="CurrentWeight">Current Weight</label>
-                                <input asp-for="CurrentWeight" class="form-control" id="CurrentWeight" placeholder="0.00 lbs">
+                                <input asp-for="CurrentWeight" type="int" class="form-control" id="CurrentWeight" placeholder="0.00 lbs">
                                 <span asp-validation-for="CurrentWeight" class="text-danger"></span>
                             </div>
                             <!--Desired Weight-->
                             <div class="form-group">
                                 <label asp-for="DesiredWeight">Desired Weight</label>
-                                <input asp-for="DesiredWeight" class="form-control" id="DesiredWeight" placeholder="0.00 lbs">
+                                <input asp-for="DesiredWeight" type="int" class="form-control" id="DesiredWeight" placeholder="0.00 lbs">
                                 <span asp-validation-for="DesiredWeight" class="text-danger"></span>
                             </div>
-                            <!--Height-->
-                            <div class="form-group">
-                                <label asp-for="Height_In">Height</label>
-                                <input asp-for="Height_In" class="form-control" id="Height_In" placeholder="0.00 inches">
-                                <span asp-validation-for="Height_In" class="text-danger"></span>
-                            </div>
-                            <!--Gender-->
-                            <div class="form-group">
-                                <label asp-for="Gender" class="control-label">Gender</label>
-                                <select asp-for="Gender" class="form-control">
-                                    <option value="Empty">Select A Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                                <span asp-validation-for="Gender" class="text-danger"></span>
-                            </div>
-                            
                             <!--Activity Level-->
                             <div class="form-group">
                                 <label asp-for="ActivityLevel" class="control-label">Activity Level</label>
@@ -62,35 +45,6 @@
                                 <span asp-validation-for="ActivityLevel" class="text-danger"></span>
                                 <span asp-validation-for="ActivityLevel" class="text-danger"></span>
                             </div>
-
-                            <!--Birthday-->
-                            <div class="form-group">
-                                <label asp-for="Birthday" class="control-label">Birthday</label>
-                                <input asp-for="Birthday" type="date" class="form-control" />
-                                <span asp-validation-for="Birthday" class="text-danger"></span>
-                            </div>
-
-                            @*<!--Calories-->
-                            <div class="form-group">
-                                <label asp-for="CalorieLimit">Calorie Limit</label>
-                                <input asp-for="CalorieLimit" class="form-control" id="CalorieLimit" placeholder="2000">
-                                <span asp-validation-for="CalorieLimit" class="text-danger"></span>
-                            </div>
-
-                            <!--Name-->
-                            <div class="form-group">
-                                <label asp-for="Name">Name</label>
-                                <input asp-for="Name" class="form-control" id="Name" placeholder="John Doe">
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-
-                            <!--Email-->
-                            <div class="form-group">
-                                <label asp-for="Email">Email Address</label>
-                                <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="janedoe1@gmail.com">
-                                <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>*@
-                            
 
                             <button type="submit" class="btn btn-primary">Calibrate</button>
                             <button type="reset" class="btn btn-primary">Clear</button>
