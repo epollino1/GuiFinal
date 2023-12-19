@@ -18,13 +18,32 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        
-        User user = _context.Users.Where(a => a.Email.Equals(User.Identity.Name)).ToArray()[0];
-        WeightLog log = _context.WeightLogs.Where(a => a.UserId.Equals(user.UserId)).OrderByDescending(a => a.LoggedAt).First();
-        ViewData["UserName"] = user.Username;
-        ViewData["WeightStart"] = user.StartingWeight;
-        ViewData["WeightGoal"] = user.DesiredWeight;
-        ViewData["WeightCurr"] = log.CurrentWeight;
+        User user = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+
+        if (user != null)
+        {
+            WeightLog log = _context.WeightLogs.Where(a => a.UserId.Equals(user.UserId))
+                                                .OrderByDescending(a => a.LoggedAt)
+                                                .FirstOrDefault();
+
+            if (log != null)
+            {
+                ViewData["UserName"] = user.Username;
+                ViewData["WeightStart"] = user.StartingWeight;
+                ViewData["WeightGoal"] = user.DesiredWeight;
+                ViewData["WeightCurr"] = log.CurrentWeight;
+            }
+            else
+            {
+                ViewData["ErrorMessage"] = "No weight log found for the user.";
+            }
+        }
+        else
+        {
+            ViewData["ErrorMessage"] = "User not found.";
+
+            return RedirectToAction("Login", "Account");
+        }
 
         return View(user);
     }
