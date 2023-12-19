@@ -6,7 +6,9 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FitnisTracker" expanded="True" />
+          <Node name="FitnisTracker" expanded="True">
+            <Node name="FitnisTracker" selected="True" />
+          </Node>
         </State>
       </Pad>
     </Pads>
@@ -14,5 +16,4 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.FitnisTests PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
