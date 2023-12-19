@@ -112,6 +112,7 @@ namespace FitnisTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< Updated upstream
         public async Task<IActionResult> Edit(string id, [Bind("UserId,Username,Email,StartingWeight,CurrentWeight,DesiredWeight,HeightIn,Gender,Age,CalorieLimit,Activity")] User user, [Bind("Birthday")] DateTime birthday )
         {
             _logger.LogInformation($"birth {birthday.Ticks}");
@@ -121,10 +122,16 @@ namespace FitnisTracker.Controllers
                 return NotFound();
             }
 
+=======
+        public async Task<IActionResult> Edit([Bind("UserId,Username,Email,HeightIn,Gender")] User user, [Bind("Birthday")] DateTime birthday)
+        {
+>>>>>>> Stashed changes
             if (ModelState.IsValid)
             {
+                user.Birthday = BitConverter.GetBytes(birthday.Ticks);
                 try
                 {
+                    _logger.Log(LogLevel.Information, "Trying to update");
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
@@ -139,7 +146,7 @@ namespace FitnisTracker.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return View(user);
             }
             return View(user);
         }
