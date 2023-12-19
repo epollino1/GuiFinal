@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< Updated upstream
     "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj": {}
   },
   "projects": {
@@ -13,56 +12,29 @@
         "projectPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj",
         "packagesPath": "C:\\Users\\Joey\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\obj\\",
-=======
-    "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/FitnisTests.csproj": {}
-  },
-  "projects": {
-    "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/FitnisTests.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/FitnisTests.csproj",
-        "projectName": "FitnisTests",
-        "projectPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/FitnisTests.csproj",
-        "packagesPath": "/Users/dylan_sacco/.nuget/packages/",
-        "outputPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTests/obj/",
->>>>>>> Stashed changes
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< Updated upstream
           "C:\\Users\\Joey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-          "/Users/dylan_sacco/.nuget/NuGet/NuGet.Config"
->>>>>>> Stashed changes
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-<<<<<<< Updated upstream
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-=======
-          "/Users/dylan_sacco/NugetCustom": {},
-          "/usr/local/share/dotnet/library-packs": {},
->>>>>>> Stashed changes
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-<<<<<<< Updated upstream
               "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj": {
                 "projectPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj"
-=======
-              "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj": {
-                "projectPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj"
->>>>>>> Stashed changes
               }
             }
           }
@@ -114,7 +86,6 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< Updated upstream
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
@@ -127,44 +98,21 @@
         "projectPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj",
         "packagesPath": "C:\\Users\\Joey\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\obj\\",
-=======
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.403/RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj",
-        "projectName": "FitnisTracker",
-        "projectPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/FitnisTracker.csproj",
-        "packagesPath": "/Users/dylan_sacco/.nuget/packages/",
-        "outputPath": "/Users/dylan_sacco/GitRepos/GuiFinal/FitnisTracker/FitnisTracker/obj/",
->>>>>>> Stashed changes
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< Updated upstream
           "C:\\Users\\Joey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-          "/Users/dylan_sacco/.nuget/NuGet/NuGet.Config"
->>>>>>> Stashed changes
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-<<<<<<< Updated upstream
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-=======
-          "/Users/dylan_sacco/NugetCustom": {},
-          "/usr/local/share/dotnet/library-packs": {},
->>>>>>> Stashed changes
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -231,11 +179,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< Updated upstream
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.403/RuntimeIdentifierGraph.json"
->>>>>>> Stashed changes
         }
       }
     }

@@ -1,6 +1,6 @@
 ﻿@model FitnisTracker.Models.UserModel;
 @{
-    ViewData["Title"] = "Registration Page";
+    ViewData["Title"] = "Recalibration Page";
 
 }
 
@@ -71,7 +71,7 @@
                                 <span asp-validation-for="Birthday" class="text-danger"></span>
                             </div>
 
-                            <!--Calories-->
+                            @*<!--Calories-->
                             <div class="form-group">
                                 <label asp-for="CalorieLimit">Calorie Limit</label>
                                 <input asp-for="CalorieLimit" class="form-control" id="CalorieLimit" placeholder="2000">
@@ -90,10 +90,10 @@
                                 <label asp-for="Email">Email Address</label>
                                 <input asp-for="Email" type="email" class="form-control" id="Email" placeholder="janedoe1@gmail.com">
                                 <span asp-validation-for="Email" class="text-danger"></span>
-                            </div>
+                            </div>*@
                             
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Calibrate</button>
                             <button type="reset" class="btn btn-primary">Clear</button>
                         </form>
                     </div>
