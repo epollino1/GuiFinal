@@ -27,6 +27,7 @@ namespace FitnisTracker.Controllers
         // GET: User
         public async Task<IActionResult> Index()
         {
+            return RedirectToAction("Index", "Home");
              return _context.Users != null ? 
                           View(await _context.Users.ToListAsync()) :
                           Problem("Entity set 'FitnisContext.Users'  is null.");
@@ -37,6 +38,7 @@ namespace FitnisTracker.Controllers
         // GET: User/Details/5
         public async Task<IActionResult> Details(string id)
         {
+            return RedirectToAction("Index", "Home");
             if (id == null || _context.Users == null)
             {
                 return NotFound();
@@ -55,6 +57,7 @@ namespace FitnisTracker.Controllers
         // GET: User/Create
         public IActionResult Create()
         {
+            return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -76,7 +79,7 @@ namespace FitnisTracker.Controllers
 
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(IdentityUser account)
-        { 
+        {
             //var id = await _userManager.GetUserIdAsync(account);
             //var email = await _userManager.GetEmailAsync(account);
             string userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
@@ -109,8 +112,10 @@ namespace FitnisTracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("UserId,Username,Email,StartingWeight,CurrentWeight,DesiredWeight,HeightIn,Gender,Birthday,Age,CalorieLimit,Activity")] User user)
+        public async Task<IActionResult> Edit(string id, [Bind("UserId,Username,Email,StartingWeight,CurrentWeight,DesiredWeight,HeightIn,Gender,Age,CalorieLimit,Activity")] User user, [Bind("Birthday")] DateTime birthday )
         {
+            _logger.LogInformation($"birth {birthday.Ticks}");
+            user.Birthday = BitConverter.GetBytes(birthday.Ticks);
             if (id != user.UserId)
             {
                 return NotFound();
@@ -142,6 +147,7 @@ namespace FitnisTracker.Controllers
         // GET: User/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
+            return RedirectToAction("Index", "Home");
             if (id == null || _context.Users == null)
             {
                 return NotFound();

@@ -1,18 +1,19 @@
-﻿@{
+﻿
+@{
 
     ViewData["Title"] = "Home Page";
 }
 
 
-<h1 class="display-4">Welcome, [UserName]</h1>
+<h1 class="display-4">Welcome, @ViewData["UserName"]</h1>
 <p>It's time to get fit</p>
 
 
 @*Weight Goal*@
 <div class="outline">
     <h2>Log Weight:</h2>
-    <h4>Weight Goal: [Weight Goal]</h4>
-    <h4>Current Weight: [Current Weight]</h4>
+    <h4>Weight Goal: @ViewData["WeightGoal"]</h4>
+    <h4>Current Weight: @ViewData["WeightCurr"]</h4>
         
     @*Progress Bar*@
     <div>
