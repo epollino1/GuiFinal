@@ -18,9 +18,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewData["UserName"] = User.Identity.Name;
+        
         User user = _context.Users.Where(a => a.Email.Equals(User.Identity.Name)).ToArray()[0];
         WeightLog log = _context.WeightLogs.Where(a => a.UserId.Equals(user.UserId)).OrderByDescending(a => a.LoggedAt).First();
+        ViewData["UserName"] = user.Username;
         ViewData["WeightStart"] = user.StartingWeight;
         ViewData["WeightGoal"] = user.DesiredWeight;
         ViewData["WeightCurr"] = log.CurrentWeight;

@@ -27,7 +27,7 @@ namespace FitnisTracker.Controllers
         // GET: User
         public async Task<IActionResult> Index()
         {
-            return RedirectToAction("Index", "Home");
+            //return RedirectToAction("Index", "Home");
              return _context.Users != null ? 
                           View(await _context.Users.ToListAsync()) :
                           Problem("Entity set 'FitnisContext.Users'  is null.");

@@ -2,31 +2,23 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FitnisTracker/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FitnisTracker/Controllers/HomeController.cs">
     <Files>
-      <File FileName="FitnisTracker/Views/Home/HomePage.cshtml" />
-      <File FileName="FitnisTracker/Views/Home/Index.cshtml" />
-      <File FileName="FitnisTracker/Views/Shared/_Layout.cshtml" Line="40" Column="10" />
-      <File FileName="FitnisTracker/Views/Shared/_LoginPartial.cshtml" />
-      <File FileName="FitnisTracker/Views/Shared/Error.cshtml" />
-      <File FileName="FitnisTracker/Views/Shared/_ValidationScriptsPartial.cshtml" />
-      <File FileName="FitnisTracker/Views/Home/Registration.cshtml" />
-      <File FileName="FitnisTracker/Views/Home/RegiResponse.cshtml" />
-      <File FileName="FitnisTracker/Views/Home/Privacy.cshtml" />
-      <File FileName="FitnisTracker/Properties/launchSettings.json" />
-      <File FileName="FitnisTracker/Views/_ViewStart.cshtml" />
-      <File FileName="FitnisTracker/Views/_ViewImports.cshtml" />
-      <File FileName="FitnisTracker/Views/WeightLog/Index.cshtml" />
+      <File FileName="FitnisTracker/Views/Home/Index.cshtml" Line="16" Column="53" />
+      <File FileName="FitnisTracker/Controllers/HomeController.cs" Line="27" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FitnisTracker">
+          <Node name="FitnisTracker" expanded="True">
             <Node name="FitnisTracker" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True" />
+                <Node name="User" expanded="True" />
                 <Node name="WeightLog" expanded="True" />
               </Node>
             </Node>

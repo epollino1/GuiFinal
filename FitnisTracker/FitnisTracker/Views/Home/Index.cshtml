@@ -3,7 +3,13 @@
 
     ViewData["Title"] = "Home Page";
 }
-
+<style>
+    .dropRight {
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    }
+    .form {
+    }
+</style>
 
 <h1 class="display-4">Welcome, @ViewData["UserName"]</h1>
 <p>It's time to get fit</p>
@@ -29,13 +35,13 @@
                    class="form-control"/>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary" >Update</button>
+            <button class="btn btn-primary dropRight" >Update</button>
         </div>
     </form>
 </div> @*End Weight Goal*@
 
     @*Calorie Goal*@
-<div class="outline">
+<div class="outline form">
     <h2>Log Food:</h2>
     <h4>Calorie Goal: [Calorie Goal]</h4>
     <h4>Current Count: [Today Total]</h4>
@@ -55,11 +61,11 @@
         <div class="form-group">
             <label>Calories: </label>
             <input type="number"
-                   class="form-control"/>
+                   class="form-control "/>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary">Submit</button>
-            <button class="btn btn-primary">Edit Logs</button>
+            <button class="btn btn-primary dropRight">Submit</button>
+            <button class="btn btn-primary dropRight">Edit Logs</button>
         </div>
     </form>
 </div>
