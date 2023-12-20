@@ -24,7 +24,15 @@ namespace FitnisTracker.Controllers
         // GET: CaloryLog
         public async Task<IActionResult> Index()
         {
+            User user = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+
+            if (user is null)
+            {
+                return NotFound();
+            }
             var fitnisContext = _context.CaloryLogs.Include(c => c.User);
+            //fitnisContext = fitnisContext.Where(cl => cl.UserId.Equals(user.UserId));
+
             return View(await fitnisContext.ToListAsync());
         }
 

@@ -73,34 +73,34 @@
                         25%
                     </div>
                     <script>
-                    let startWeight = parseFloat("@ViewData["WeightStart"]");
-                    let currWeight = parseFloat("@ViewData["WeightCurr"]");
-                    let goalWeight = parseFloat("@ViewData["WeightGoal"]");
+                        let startWeight = parseFloat("@ViewData["WeightStart"]");
+                        let currWeight = parseFloat("@ViewData["WeightCurr"]");
+                        let goalWeight = parseFloat("@ViewData["WeightGoal"]");
 
-                let percent = (currWeight - goalWeight) / (startWeight - goalWeight) * 100;
-                percent = 100 - percent;
-            let percentStr = percent + "%";
-            let bar = document.getElementById("WeightProgress");
-            bar.style.width = percentStr;
-            bar.innerText = percentStr;
+                        let percent = (currWeight - goalWeight) / (startWeight - goalWeight) * 100;
+                        percent = 100 - percent;
+                        let percentStr = percent + "%";
+                        let bar = document.getElementById("WeightProgress");
+                        bar.style.width = percentStr;
+                        bar.innerText = percentStr;
 
-            console.log(startWeight);
-            console.log(currWeight);
-            console.log(goalWeight);
+                        console.log(startWeight);
+                        console.log(currWeight);
+                        console.log(goalWeight);
 
-            if ( isNaN(startWeight) ) {
-                console.log('nan start ');
-                bar.style.width = '0%';
-                bar.innerText = '';
-            } else if ( isNaN(goalWeight) ) {
-                console.log('nan goal weight');
-                bar.style.width = '0%';
-                bar.innerText = '';
-            } else if ( isNaN(currWeight) ) {
-                console.log('cur weight is nan');
-                bar.style.width = '0%';
-                bar.innerText = '0%';
-            }
+                        if ( isNaN(startWeight) ) {
+                            console.log('nan start ');
+                            bar.style.width = '0%';
+                            bar.innerText = '';
+                        } else if ( isNaN(goalWeight) ) {
+                            console.log('nan goal weight');
+                            bar.style.width = '0%';
+                            bar.innerText = '';
+                        } else if ( isNaN(currWeight) ) {
+                            console.log('cur weight is nan');
+                            bar.style.width = '0%';
+                            bar.innerText = '0%';
+                        }
                     </script>
 
                 </div>
