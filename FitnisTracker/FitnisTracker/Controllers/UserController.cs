@@ -17,7 +17,6 @@ namespace FitnisTracker.Controllers
         private readonly FitnisContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<UserController> _logger;
-        private User TempUser;
 
         public UserController(FitnisContext context, UserManager<IdentityUser> userManager, ILogger<UserController> logger)
         {
@@ -136,7 +135,7 @@ namespace FitnisTracker.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(TempUser.UserId))
+                    if (!UserExists(user.UserId))
                     {
                         return NotFound();
                     }
@@ -207,39 +206,30 @@ namespace FitnisTracker.Controllers
 
             return age;
         }
+
+
         public async Task<IActionResult> Registration()
         {
             string userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-            //_logger.LogInformation(userEmail);
-
-            //_logger.Log(LogLevel.Information, "Email: {userEmail}", userEmail);
-            //_logger.Log(LogLevel.Information, "Context: {_context.Users}", _context.Users);
-
             if (_context.Users == null || userEmail == null)
             {
                 _logger.Log(LogLevel.Error, "something is null");
                 return NotFound();
             }
-
             User user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
-            //User user = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
 
             if (user == null)
             {
                 _logger.LogError("No user found");
                 return NotFound();
             }
-
-            _logger.LogInformation(user.UserId);
-            //_logger.LogInformation(user.Email);
-
             return View(user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registration([Bind("StartingWeight,DesiredWeight,Activity")] User user)
         {
-            //_logger.LogInformation(user.UserId);
+            _logger.LogInformation(user.UserId);
             if (ModelState.IsValid)
             {
                 try
