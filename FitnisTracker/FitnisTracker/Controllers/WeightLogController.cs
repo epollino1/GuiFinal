@@ -68,6 +68,23 @@ namespace FitnisTracker.Controllers
             return View(weightLog);
         }
 
+        //Post
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogFood(double weight)
+        {
+            User user = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+            WeightLog currentLog = new WeightLog();
+            currentLog.Id = 0;
+            try { currentLog.Id = _context.WeightLogs.OrderByDescending(a => a.Id).First().Id + 1; } catch {  }
+            currentLog.UserId = user.UserId;
+            currentLog.CurrentWeight = weight;
+            _context.Add(currentLog);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+            //return View("Index");
+        }
+
         // GET: WeightLog/Edit/5
         public async Task<IActionResult> Edit(long? id)
         {
