@@ -27,8 +27,84 @@ double weightGoal = 0;
 if (startWeight <= 0)
 {
         <div class="outline">
-    <h2>Calibrate / Recalibrate your profile</h2>
-    <a class="btn btn-secondary" href="/User/Registration">Recalibrate</a>
+            <h2>Calibrate / Recalibrate your profile</h2>
+            <a class="btn btn-secondary" href="/User/Registration">Recalibrate</a>
+        </div>
+    }
+    else if (curWeight <= 0)
+    {
+        <div class="outline">
+            <h2>Log Your Current Weight</h2>
+            <form method="post" asp-action="LogFood" asp-controller="WeightLog">
+                <div class="form-group">
+                    <label for="weight">Weight: </label>
+                    <input for="weight"
+                           name="weight"
+                           type="number"
+                           class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary dropRight">Update</button>
+                </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        @*Weight Goal*@
+        <div class="outline">
+
+            <h2>Log Weight:</h2>
+            <h4>Starting Weight: @ViewData["WeightStart"]</h4>
+            <h4>Current Weight: @ViewData["WeightCurr"]</h4>
+            <h4>Weight Goal: @ViewData["WeightGoal"]</h4>
+
+
+            @*Progress Bar*@
+            <div>
+                <div class="progress">
+                    @{
+
+                    }
+                    <div class="progress-bar"
+                         role="progressbar"
+                         id="WeightProgress"
+                         @*style="width: 25%;"*@>
+                        25%
+                    </div>
+                    <script>
+                        let startWeight = parseFloat("@ViewData["WeightStart"]");
+                        let currWeight = parseFloat("@ViewData["WeightCurr"]");
+                        let goalWeight = parseFloat("@ViewData["WeightGoal"]");
+
+                        let percent = (currWeight - goalWeight) / (startWeight - goalWeight) * 100;
+                        percent = 100 - percent;
+                        percent = percent.toPrecision(4);
+                        let percentStr = percent + "%";
+                        let bar = document.getElementById("WeightProgress");
+                        bar.style.width = percentStr;
+                        bar.innerText = percentStr;
+
+                        console.log(startWeight);
+                        console.log(currWeight);
+                        console.log(goalWeight);
+
+                        if ( isNaN(startWeight) ) {
+                            console.log('nan start ');
+                            bar.style.width = '0%';
+                            bar.innerText = '';
+                        } else if ( isNaN(goalWeight) ) {
+                            console.log('nan goal weight');
+                            bar.style.width = '0%';
+                            bar.innerText = '';
+                        } else if ( isNaN(currWeight) ) {
+                            console.log('cur weight is nan');
+                            bar.style.width = '0%';
+                            bar.innerText = '0%';
+                        }
+                    </script>
+
+                </div>
             </div>
 }
 else
@@ -62,6 +138,7 @@ else
 
                                 let percent = (currWeight - goalWeight) / (startWeight - goalWeight) * 100;
                                 percent = 100 - percent;
+                                percent = percent.toPrecision(4);
                                 let percentStr = percent + "%";
                                 let bar = document.getElementById("WeightProgress");
                                 bar.style.width = percentStr;
@@ -134,5 +211,34 @@ else
         </form>
     </div>
 
-}
+            let percentNum = (calLog / calLimit * 100);
+            percentNum = percentNum.toPrecision(4);
+            let percent = percentNum + "%";
+            bar.style.width = percent;
+            bar.innerText = percent;
+        </script>
+    }
+
+
+
+
+
+    <form method="post" asp-action="CreateLog" asp-controller="CaloryLog">
+        <div class="form-group">
+            <label>Food Item: </label>
+            <input class="form-control"
+                   name="name" />
+        </div>
+        <div class="form-group">
+            <label>Calories: </label>
+            <input type="number"
+                   name="cal"
+                   class="form-control " />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary dropRight">Submit</button>
+            <a class="btn btn-primary dropRight" asp-action="Index" asp-controller="CaloryLog">Edit Logs</a>
+        </div>
+    </form>
+</div>
 }
