@@ -1,4 +1,4 @@
-﻿@model FitnisTracker.Models.UserModel
+﻿@model FitnisTracker.Models.User
 @{
     ViewData["Title"] = "Recalibration Page";
     List<string> ActivityLevel = new List<string>
@@ -17,7 +17,7 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
-    
+
 </head>
 <body>
     <div class="container">
@@ -29,11 +29,11 @@
                     </div>
                     <div class="card-body">
                         <form asp-action="Registration" method="post">
-                            <!--Current Weight-->
+                            <!--Starting Weight-->
                             <div class="form-group">
-                                <label asp-for="CurrentWeight">Current Weight</label>
-                                <input asp-for="CurrentWeight" type="number"  class="form-control" id="CurrentWeight" placeholder="0.00 lbs">
-                                <span asp-validation-for="CurrentWeight" class="text-danger"></span>
+                                <label asp-for="StartingWeight">StartingWeight</label>
+                                <input asp-for="StartingWeight" type="number" class="form-control" id="StartingWeight" placeholder="0.00 lbs">
+                                <span asp-validation-for="StartingWeight" class="text-danger"></span>
                             </div>
                             <!--Desired Weight-->
                             <div class="form-group">
@@ -43,18 +43,21 @@
                             </div>
                             <!--Activity Level-->
                             <div class="form-group">
-                                <label asp-for="ActivityLevel" class="control-label">Activity Level</label>
-                                <select asp-for="ActivityLevel" class="form-control">
+                                <label asp-for="Activity" class="control-label">Activity Level</label>
+                                <select asp-for="Activity" class="form-control">
                                     <option value="">Select Activity Level</option>
                                     @foreach (var activityLevel in ActivityLevel)
                                     {
                                         <option value="@activityLevel">@activityLevel</option>
                                     }
                                 </select>
-                                
+                                <span asp-validation-for="Activity" class="text-danger"></span>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Calibrate</button>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Calibrate</button>
+                            </div>
                             <button type="reset" class="btn btn-primary">Clear</button>
                         </form>
                     </div>
@@ -63,7 +66,6 @@
         </div>
     </div>
 
-    
+
 </body>
 </html>
-

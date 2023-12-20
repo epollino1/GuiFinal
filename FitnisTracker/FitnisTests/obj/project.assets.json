@@ -12850,23 +12850,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\darkr\\.nuget\\packages\\": {},
+    "C:\\Users\\Joey\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\darkr\\OneDrive\\Desktop\\GitHub\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj",
+      "projectUniqueName": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj",
       "projectName": "FitnisTests",
-      "projectPath": "C:\\Users\\darkr\\OneDrive\\Desktop\\GitHub\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj",
-      "packagesPath": "C:\\Users\\darkr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\darkr\\OneDrive\\Desktop\\GitHub\\GuiFinal\\FitnisTracker\\FitnisTests\\obj\\",
+      "projectPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\FitnisTests.csproj",
+      "packagesPath": "C:\\Users\\Joey\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\darkr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Joey\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -12882,8 +12882,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\darkr\\OneDrive\\Desktop\\GitHub\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj": {
-              "projectPath": "C:\\Users\\darkr\\OneDrive\\Desktop\\GitHub\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj"
+            "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj": {
+              "projectPath": "C:\\Users\\Joey\\Desktop\\GuiFinal\\FitnisTracker\\FitnisTracker\\FitnisTracker.csproj"
             }
           }
         }
@@ -12935,7 +12935,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

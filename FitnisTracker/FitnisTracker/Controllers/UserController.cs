@@ -80,7 +80,7 @@ namespace FitnisTracker.Controllers
         }
 
         // GET: User/Edit/5
-        public async Task<IActionResult> Edit(IdentityUser account)
+        public async Task<IActionResult> Edit()
         {
             //var id = await _userManager.GetUserIdAsync(account);
             //var email = await _userManager.GetEmailAsync(account);
@@ -88,7 +88,7 @@ namespace FitnisTracker.Controllers
 
 
             //_logger.Log(LogLevel.Information, "ID: {id}", id);
-            _logger.Log(LogLevel.Information, "Email: {userEmail}", userEmail);
+            //_logger.Log(LogLevel.Information, "Email: {userEmail}", userEmail);
             //_logger.Log(LogLevel.Information, "Context: {_context.Users}", _context.Users);
 
             if (_context.Users == null || userEmail == null)
@@ -106,6 +106,9 @@ namespace FitnisTracker.Controllers
                 _logger.LogError("No user found");
                 return NotFound();
             }
+
+            //_logger.LogInformation(user.UserId);
+
             return View(user);
         }
 
@@ -123,14 +126,12 @@ namespace FitnisTracker.Controllers
                 int age = CalculateAge(birthday);
                 user.Age = age;
                 
-
-                TempUser = user;
                 
                 try
                 {
                     _logger.Log(LogLevel.Information, "Trying to update");
                     
-                    _context.Update(TempUser);
+                    _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -206,32 +207,51 @@ namespace FitnisTracker.Controllers
 
             return age;
         }
-        public IActionResult Registration()
+        public async Task<IActionResult> Registration()
         {
-            return View();
+            string userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+            //_logger.LogInformation(userEmail);
+
+            //_logger.Log(LogLevel.Information, "Email: {userEmail}", userEmail);
+            //_logger.Log(LogLevel.Information, "Context: {_context.Users}", _context.Users);
+
+            if (_context.Users == null || userEmail == null)
+            {
+                _logger.Log(LogLevel.Error, "something is null");
+                return NotFound();
+            }
+
+            User user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+            //User user = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+
+            if (user == null)
+            {
+                _logger.LogError("No user found");
+                return NotFound();
+            }
+
+            _logger.LogInformation(user.UserId);
+            //_logger.LogInformation(user.Email);
+
+            return View(user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registration([Bind("CurrentWeight,DesiredWeight")] UserModel user, [Bind("ActivityLevel")] string Activity)
+        public async Task<IActionResult> Registration([Bind("StartingWeight,DesiredWeight,Activity")] User user)
         {
-            
-
-
+            //_logger.LogInformation(user.UserId);
             if (ModelState.IsValid)
             {
-                TempUser.CurrentWeight = (double)user.CurrentWeight;
-                TempUser.DesiredWeight = (double)user.DesiredWeight;
-                TempUser.Activity = Activity;
                 try
                 {
                     _logger.Log(LogLevel.Information, "Trying to update");
 
-                    _context.Update(TempUser);
+                    _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(TempUser.UserId))
+                    if (!UserExists(user.UserId))
                     {
                         return NotFound();
                     }
@@ -240,10 +260,34 @@ namespace FitnisTracker.Controllers
                         throw;
                     }
                 }
-                return View("RegiResponse", TempUser);
+                return RedirectToAction("RegiResponse");
             }
+            _logger.LogError("Shits busted");
+
             return View();
         }
+
+        public IActionResult RegiResponse()
+        {
+            string userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+            _logger.Log(LogLevel.Information, "Email: {userEmail}", userEmail);
+
+            if (_context.Users == null || userEmail == null)
+            {
+                _logger.Log(LogLevel.Error, "something is null");
+                return NotFound();
+            }
+            User user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+
+            if (user == null)
+            {
+                _logger.LogError("No user found");
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
         public double CalculateBMR(User user)
         {
             if (user.Gender == "Male")
