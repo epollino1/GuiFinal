@@ -29,9 +29,9 @@ namespace FitnisTracker.Controllers
         public async Task<IActionResult> Index()
         {
             //return RedirectToAction("Index", "Home");
-             return _context.Users != null ? 
-                          View(await _context.Users.ToListAsync()) :
-                          Problem("Entity set 'FitnisContext.Users'  is null.");
+            return _context.Users != null ?
+                         View(await _context.Users.ToListAsync()) :
+                         Problem("Entity set 'FitnisContext.Users'  is null.");
 
 
         }
@@ -118,18 +118,18 @@ namespace FitnisTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("UserId,Username,Email,HeightIn,Gender")] User user, [Bind("Birthday")] DateTime birthday)
         {
-            
+
             if (ModelState.IsValid)
             {
                 user.Birthday = BitConverter.GetBytes(birthday.Ticks);
                 int age = CalculateAge(birthday);
                 user.Age = age;
-                
-                
+
+
                 try
                 {
                     _logger.Log(LogLevel.Information, "Trying to update");
-                    
+
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
@@ -183,14 +183,14 @@ namespace FitnisTracker.Controllers
             {
                 _context.Users.Remove(user);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool UserExists(string id)
         {
-          return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
+            return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
         }
 
         private int CalculateAge(DateTime birthDate)
@@ -198,7 +198,7 @@ namespace FitnisTracker.Controllers
             DateTime today = DateTime.Today;
             int age = today.Year - birthDate.Year;
 
-            
+
             if (birthDate.Date > today.AddYears(-age))
             {
                 age--;
@@ -222,6 +222,8 @@ namespace FitnisTracker.Controllers
             User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
             CurrUser.StartingWeight = user.StartingWeight;
             CurrUser.DesiredWeight = user.DesiredWeight;
+            CurrUser.CurrentWeight = user.StartingWeight;
+
             CurrUser.Activity = user.Activity;
             user = CurrUser;
 
@@ -230,6 +232,11 @@ namespace FitnisTracker.Controllers
             {
                 _logger.Log(LogLevel.Information, "Trying to update");
 
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+
+
+                CurrUser.CalorieLimit = CalculateCalorieIntakeForWeightLoss(CurrUser);
                 _context.Update(user);
                 await _context.SaveChangesAsync();
             }
@@ -272,6 +279,12 @@ namespace FitnisTracker.Controllers
 
         public double CalculateBMR(User user)
         {
+            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+            user.Age = CurrUser.Age;
+            user.HeightIn = CurrUser.HeightIn;
+            user.CurrentWeight = CurrUser.CurrentWeight;
+
+
             if (user.Gender == "Male")
             {
                 return 88.362 + (13.397 * (double)user.CurrentWeight) +
@@ -283,20 +296,57 @@ namespace FitnisTracker.Controllers
                        (3.098 * (double)user.HeightIn) - (4.330 * (double)user.Age);
             }
 
-            return 0;
+
         }
         public long CalculateCalorieIntakeForWeightLoss(User user)
         {
+            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+            user.Activity = CurrUser.Activity;
+
             double bmr = CalculateBMR(user);
+            double calorieIntakeForWeightLoss;
+            double calorieDeficitPerDay;
 
+            double activityFactor = 1.0;
+            if (user.Activity == null)
+            {
+                activityFactor = 1.0;
+            }
+            else
+            {
+                switch (user.Activity.ToLower()) // Convert input to lowercase for easier comparison
+                {
+                    case "sedentary":
+                        activityFactor = 1.2;
+                        break;
+                    case "light":
+                        activityFactor = 1.375;
+                        break;
+                    case "moderate":
+                        activityFactor = 1.55;
+                        break;
+                    case "active":
+                        activityFactor = 1.725;
+                        break;
+                    case "veryactive":
+                        activityFactor = 1.9;
+                        break;
+                    case "extraactive":
+                        activityFactor = 2.0;
+                        break;
+                    default:
+                        activityFactor = 1.0; // base BMR
+                        break;
+                }
 
-            double calorieDeficitPerDay = 2 * 7700 / 7; // 2 lbs = 7700 calories
-            double calorieIntakeForWeightLoss = bmr - calorieDeficitPerDay;
+            }
+
+            calorieDeficitPerDay = 2 * 7700 / 7; // 2 lbs = 7700 calories
+            calorieIntakeForWeightLoss = (bmr * activityFactor) - calorieDeficitPerDay;
 
             return (long)calorieIntakeForWeightLoss;
         }
     }
 
 
-    
 }
