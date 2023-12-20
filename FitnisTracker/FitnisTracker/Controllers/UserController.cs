@@ -117,9 +117,12 @@ namespace FitnisTracker.Controllers
             if (ModelState.IsValid)
             {
                 user.Birthday = BitConverter.GetBytes(birthday.Ticks);
+                int age = CalculateAge(birthday);
+                user.Age = age;
                 try
                 {
                     _logger.Log(LogLevel.Information, "Trying to update");
+                    
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
@@ -180,6 +183,19 @@ namespace FitnisTracker.Controllers
         private bool UserExists(string id)
         {
           return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
+        }
+        private int CalculateAge(DateTime birthDate)
+        {
+            DateTime today = DateTime.Today;
+            int age = today.Year - birthDate.Year;
+
+            
+            if (birthDate.Date > today.AddYears(-age))
+            {
+                age--;
+            }
+
+            return age;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using FitnisTracker.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FitnisTracker.Controllers;
 
@@ -60,15 +61,43 @@ public class HomeController : Controller
         return View();
     }
     [HttpPost]
-    public IActionResult Registration(UserModel user)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Registration(User user)
     {
-        if(!ModelState.IsValid)
+        User Realuser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+
+        Realuser.CurrentWeight = user.CurrentWeight;
+        Realuser.StartingWeight = user.StartingWeight;
+        Realuser.Activity = user.Activity;
+        Realuser.CalorieLimit = CalculateCalorieIntakeForWeightLoss(Realuser);
+
+        if (!ModelState.IsValid)
         {
+
             return View(user);
         }
-        return View("RegiResponse", user);
+        try
+        {
+            _logger.Log(LogLevel.Information, "Trying to update");
+
+            _context.Update(Realuser);
+            await _context.SaveChangesAsync();
+            return View("RegiResponse",Realuser);
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!UserExists(user.UserId))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        
     }
-   
+
 
     public IActionResult Privacy()
     {
@@ -80,5 +109,35 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = System.Diagnostics.Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+    private bool UserExists(string id)
+    {
+        return (_context.Users?.Any(e => e.UserId == id)).GetValueOrDefault();
+    }
+    public double CalculateBMR(User user)
+    {
+        if (user.Gender == "Male")
+        {
+            return 88.362 + (13.397 * (double)user.CurrentWeight) +
+                   (4.799 * (double)user.HeightIn) - (5.677 * (double)user.Age);
+        }
+        else if (user.Gender == "Female")
+        {
+            return 447.593 + (9.247 * (double)user.CurrentWeight) +
+                   (3.098 * (double)user.HeightIn) - (4.330 * (double)user.Age);
+        }
+
+        return 0;
+    }
+    public long CalculateCalorieIntakeForWeightLoss(User user)
+    {
+        double bmr = CalculateBMR(user);
+
+        
+        double calorieDeficitPerDay = 2 * 7700 / 7; // 2 lbs = 7700 calories
+        double calorieIntakeForWeightLoss = bmr - calorieDeficitPerDay;
+
+        return (long)calorieIntakeForWeightLoss;
+    }
 }
+
 

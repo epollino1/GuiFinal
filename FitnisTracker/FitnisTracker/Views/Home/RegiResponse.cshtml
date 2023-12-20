@@ -1,4 +1,4 @@
-﻿@model FitnisTracker.Models.UserModel
+﻿@model FitnisTracker.Models.User
 
 @{
     ViewData["Title"] = "Registration Response";
@@ -7,7 +7,6 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
-    
 </head>
 <body>
     <div class="container">
@@ -19,24 +18,20 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <p><strong>Name:</strong> @Model.Name</p>
                             <p><strong>Email:</strong> @Model.Email</p>
                             <p><strong>Current Weight:</strong> @Model.CurrentWeight</p>
                             <p><strong>Desired Weight:</strong> @Model.DesiredWeight</p>
-                            <p><strong>Height:</strong> @Model.Height_In inches</p>
+                            <p><strong>Height:</strong> @Model.HeightIn inches</p>
                             <p><strong>Gender:</strong> @Model.Gender</p>
-                            <p><strong>Activity Level:</strong> @Model.ActivityLevel</p>
-                            <p><strong>Birthday:</strong> @Model.Birthday.ToShortDateString()</p>
+                            <p><strong>Activity Level:</strong> @Model.Activity</p>
                             <p><strong>Age:</strong> @Model.Age</p>
                             <p><strong>Calorie Limit:</strong> @Model.CalorieLimit</p>
-                            <!-- Add other properties as needed -->
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    
 </body>
 </html>
