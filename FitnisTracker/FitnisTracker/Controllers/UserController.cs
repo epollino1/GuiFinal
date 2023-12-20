@@ -93,9 +93,6 @@ namespace FitnisTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("UserId,Username,Email,HeightIn,Gender")] User user, [Bind("Birthday")] DateTime birthday)
         {
-
-<<<<<<< Updated upstream
-=======
             User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
             CurrUser.Username = user.Username;
             CurrUser.Email = user.Email;
@@ -103,7 +100,6 @@ namespace FitnisTracker.Controllers
             CurrUser.Gender = user.Gender;
             user = CurrUser;
 
->>>>>>> Stashed changes
             if (ModelState.IsValid)
             {
                 user.Birthday = BitConverter.GetBytes(birthday.Ticks);
@@ -332,10 +328,4 @@ namespace FitnisTracker.Controllers
             return (long)calorieIntakeForWeightLoss;
         }
     }
-<<<<<<< Updated upstream
-
-
 }
-=======
-}
->>>>>>> Stashed changes
