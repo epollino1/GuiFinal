@@ -81,34 +81,9 @@ namespace FitnisTracker.Controllers
         // GET: User/Edit/5
         public async Task<IActionResult> Edit()
         {
-            //var id = await _userManager.GetUserIdAsync(account);
-            //var email = await _userManager.GetEmailAsync(account);
-            string userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
 
-
-            //_logger.Log(LogLevel.Information, "ID: {id}", id);
-            //_logger.Log(LogLevel.Information, "Email: {userEmail}", userEmail);
-            //_logger.Log(LogLevel.Information, "Context: {_context.Users}", _context.Users);
-
-            if (_context.Users == null || userEmail == null)
-            {
-                _logger.Log(LogLevel.Error, "something is null");
-                return NotFound();
-            }
-
-            //var user = await _context.Users.FindAsync(id);
-            //var user = await _context.Users.FindAsync(userEmail);
-            User user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
-
-            if (user == null)
-            {
-                _logger.LogError("No user found");
-                return NotFound();
-            }
-
-            //_logger.LogInformation(user.UserId);
-
-            return View(user);
+            return View(CurrUser);
         }
 
         // POST: User/Edit/5
@@ -119,6 +94,16 @@ namespace FitnisTracker.Controllers
         public async Task<IActionResult> Edit([Bind("UserId,Username,Email,HeightIn,Gender")] User user, [Bind("Birthday")] DateTime birthday)
         {
 
+<<<<<<< Updated upstream
+=======
+            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+            CurrUser.Username = user.Username;
+            CurrUser.Email = user.Email;
+            CurrUser.HeightIn = user.HeightIn;
+            CurrUser.Gender = user.Gender;
+            user = CurrUser;
+
+>>>>>>> Stashed changes
             if (ModelState.IsValid)
             {
                 user.Birthday = BitConverter.GetBytes(birthday.Ticks);
@@ -347,6 +332,10 @@ namespace FitnisTracker.Controllers
             return (long)calorieIntakeForWeightLoss;
         }
     }
+<<<<<<< Updated upstream
 
 
 }
+=======
+}
+>>>>>>> Stashed changes

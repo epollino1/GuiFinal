@@ -47,8 +47,20 @@
 
 
         </form>
-        <a class="btn btn-secondary" asp-controller="User" asp-action="Registration">Recalibrate</a>
+        
 
+    </div>
+
+    <div class="col-sm-4 offset-md-2 border-left outline">
+        <div>
+            <p><strong>Current Weight:</strong> @Model.CurrentWeight</p>
+            <p><strong>Desired Weight:</strong> @Model.DesiredWeight</p>
+            <p><strong>Activity Level:</strong> @Model.Activity</p>
+            <p><strong>Age:</strong> @Model.Age</p>
+            <p><strong>Calorie Limit:</strong> @Model.CalorieLimit</p>
+        </div>
+
+        <a class="btn btn-secondary" asp-controller="User" asp-action="Registration">Recalibrate</a>
     </div>
 </div>
 
