@@ -20,6 +20,8 @@
 
     double weightGoal = 0;
     double curWeight = 0;
+    double startWeight = 0;
+    try { startWeight = double.Parse(ViewData["WeightStart"] + ""); } catch { }
     try { weightGoal = double.Parse(ViewData["WeightGoal"] + ""); } catch { }
     try { curWeight = double.Parse(ViewData["WeightCurr"] + ""); } catch { }
 
@@ -59,53 +61,58 @@
             <h4>Current Weight: @ViewData["WeightCurr"]</h4>
             <h4>Weight Goal: @ViewData["WeightGoal"]</h4>
 
-
+            
             @*Progress Bar*@
-            <div>
-                <div class="progress">
-                    @{
+            @{
+                if (weightGoal != null && weightGoal <= curWeight && startWeight >= weightGoal && weightGoal != 0)
+                {
+                    <div>
+                        <div class="progress">
+                            @{
 
-                    }
-                    <div class="progress-bar"
-                         role="progressbar"
-                         id="WeightProgress"
-                         @*style="width: 25%;"*@>
-                        25%
+                            }
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 id="WeightProgress"
+                            @*style="width: 25%;"*@>
+                                25%
+                            </div>
+                            <script>
+                                let startWeight = parseFloat("@ViewData["WeightStart"]");
+                                let currWeight = parseFloat("@ViewData["WeightCurr"]");
+                                let goalWeight = parseFloat("@ViewData["WeightGoal"]");
+
+                                let percent = (currWeight - goalWeight) / (startWeight - goalWeight) * 100;
+                                percent = 100 - percent;
+                                let percentStr = percent + "%";
+                                let bar = document.getElementById("WeightProgress");
+                                bar.style.width = percentStr;
+                                bar.innerText = percentStr;
+
+                                console.log(startWeight);
+                                console.log(currWeight);
+                                console.log(goalWeight);
+
+                                if (isNaN(startWeight)) {
+                                    console.log('nan start ');
+                                    bar.style.width = '0%';
+                                    bar.innerText = '';
+                                } else if (isNaN(goalWeight)) {
+                                    console.log('nan goal weight');
+                                    bar.style.width = '0%';
+                                    bar.innerText = '';
+                                } else if (isNaN(currWeight)) {
+                                    console.log('cur weight is nan');
+                                    bar.style.width = '0%';
+                                    bar.innerText = '0%';
+                                }
+                            </script>
+
+                        </div>
                     </div>
-                    <script>
-                        let startWeight = parseFloat("@ViewData["WeightStart"]");
-                        let currWeight = parseFloat("@ViewData["WeightCurr"]");
-                        let goalWeight = parseFloat("@ViewData["WeightGoal"]");
-
-                        let percent = (currWeight - goalWeight) / (startWeight - goalWeight) * 100;
-                        percent = 100 - percent;
-                        let percentStr = percent + "%";
-                        let bar = document.getElementById("WeightProgress");
-                        bar.style.width = percentStr;
-                        bar.innerText = percentStr;
-
-                        console.log(startWeight);
-                        console.log(currWeight);
-                        console.log(goalWeight);
-
-                        if ( isNaN(startWeight) ) {
-                            console.log('nan start ');
-                            bar.style.width = '0%';
-                            bar.innerText = '';
-                        } else if ( isNaN(goalWeight) ) {
-                            console.log('nan goal weight');
-                            bar.style.width = '0%';
-                            bar.innerText = '';
-                        } else if ( isNaN(currWeight) ) {
-                            console.log('cur weight is nan');
-                            bar.style.width = '0%';
-                            bar.innerText = '0%';
-                        }
-                    </script>
-
-                </div>
-            </div>
-
+                }
+            
+            }
             <form method="post" asp-action="LogFood" asp-controller="WeightLog">
                 <div class="form-group">
                     <label for="weight">Weight: </label>
