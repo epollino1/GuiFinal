@@ -7,6 +7,7 @@
     .dropRight {
         box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
     }
+
     .form {
     }
 </style>
@@ -14,58 +15,119 @@
 <h1 class="display-4">Welcome, @ViewData["UserName"]</h1>
 <p>It's time to get fit</p>
 
+@{
+double weight = 0;
+try
+{
+    double.TryParse(ViewData["WeightGoal"].ToString(), out weight);
+}
+catch
+{
+}
 
-@*Weight Goal*@
-<div class="outline">
-    <h2>Log Weight:</h2>
-    <h4>Weight Goal: @ViewData["WeightGoal"]</h4>
-    <h4>Current Weight: @ViewData["WeightCurr"]</h4>
-        
-    @*Progress Bar*@
-    <div>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-        </div>
-    </div>
 
-    <form>
-        <div class="form-group">
-            <label>Weight: </label>
-            <input asp-for="CurrentWeight" type="number"
-                   class="form-control"/>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary dropRight" >Update</button>
-        </div>
+if (weight <= 0)
+{
+    <h2>Calibrate / Recalibrate your profile</h2>
+    <form method="post">
+        <button class="btn btn-secondary" asp-controller="User" asp-action="Registration">Recalibrate</button>
     </form>
-</div> @*End Weight Goal*@
+}
+else
+{
+    @*Weight Goal*@
+    <div class="outline">
+
+        <h2>Log Weight:</h2>
+        <h4>Weight Goal: @ViewData["WeightGoal"]</h4>
+        <h4>Current Weight: @ViewData["WeightCurr"]</h4>
+
+        @*Progress Bar*@
+        <div>
+            <div class="progress">
+                @{
+
+                }
+                <div class="progress-bar"
+                        role="progressbar"
+                        id="WeightProgress"
+                        @*style="width: 25%;"*@>
+                    25%
+                </div>
+                <script>
+            let startWeight = parseInt("@ViewData["WeightStart"]");
+            let currWeight = parseInt("@ViewData["WeightCurr"]");
+            let goalWeight = parseInt("@ViewData["WeightGoal"]");
+
+            let percent = startWeight / currWeight * 100;
+            let percentStr = percent + "%";
+            let bar = document.getElementById("WeightProgress");
+            bar.style.width = percentStr;
+            bar.innerText = percentStr;
+
+            console.log(startWeight);
+            console.log(currWeight);
+            console.log(goalWeight);
+
+            if ( isNaN(startWeight) ) {
+                console.log('nan start ');
+                bar.style.width = '0%';
+                bar.innerText = '';
+            } else if ( isNaN(goalWeight) ) {
+                console.log('nan goal weight');
+                bar.style.width = '0%';
+                bar.innerText = '';
+            } else if ( isNaN(currWeight) ) {
+                console.log('cur weight is nan');
+                bar.style.width = '0%';
+                bar.innerText = '0%';
+            }
+                </script>
+
+            </div>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label>Weight: </label>
+                <input asp-for="CurrentWeight" type="number"
+                        class="form-control" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary dropRight">Update</button>
+            </div>
+        </form>
+    </div> @*End Weight Goal*@
 
     @*Calorie Goal*@
-<div class="outline form">
-    <h2>Log Food:</h2>
-    <h4>Calorie Goal: [Calorie Goal]</h4>
-    <h4>Current Count: [Today Total]</h4>
+    <div class="outline form">
+        <h2>Log Food:</h2>
+        <h4>Calorie Goal: [Calorie Goal]</h4>
+        <h4>Current Count: [Today Total]</h4>
 
-    @*Progress Bar*@
-    <div>
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+        @*Progress Bar*@
+        <div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            </div>
         </div>
+
+        <form>
+            <div class="form-group">
+                <label>Food Item: </label>
+                <input class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Calories: </label>
+                <input type="number"
+                        class="form-control " />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary dropRight">Submit</button>
+                <button class="btn btn-primary dropRight">Edit Logs</button>
+            </div>
+        </form>
     </div>
 
-    <form>
-        <div class="form-group">
-            <label>Food Item: </label>
-            <input class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>Calories: </label>
-            <input type="number"
-                   class="form-control "/>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary dropRight">Submit</button>
-            <button class="btn btn-primary dropRight">Edit Logs</button>
-        </div>
-    </form>
-</div>
+}
+}
