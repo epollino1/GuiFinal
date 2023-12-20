@@ -29,7 +29,7 @@ namespace FitnisTracker.Models
         [Required]
         public string Gender { get; set; }
 
-        [Required]
+        
         public String ActivityLevel { get; set; }
 
         [Required]

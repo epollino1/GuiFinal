@@ -16,6 +16,7 @@ namespace FitnisTracker.Controllers
         private readonly FitnisContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<UserController> _logger;
+        private User TempUser;
 
         public UserController(FitnisContext context, UserManager<IdentityUser> userManager, ILogger<UserController> logger)
         {
@@ -114,22 +115,25 @@ namespace FitnisTracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit([Bind("UserId,Username,Email,HeightIn,Gender")] User user, [Bind("Birthday")] DateTime birthday)
         {
+            
             if (ModelState.IsValid)
             {
                 user.Birthday = BitConverter.GetBytes(birthday.Ticks);
                 int age = CalculateAge(birthday);
                 user.Age = age;
+
+                TempUser = user;
                 
                 try
                 {
                     _logger.Log(LogLevel.Information, "Trying to update");
                     
-                    _context.Update(user);
+                    _context.Update(TempUser);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserId))
+                    if (!UserExists(TempUser.UserId))
                     {
                         return NotFound();
                     }
@@ -206,42 +210,37 @@ namespace FitnisTracker.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registration(User User)
+        public async Task<IActionResult> Registration([Bind("CurrentWeight,DesiredWeight,Activity")] UserModel user)
         {
-
-
-
             
-           
-            User.CalorieLimit = CalculateCalorieIntakeForWeightLoss(User);
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(User);
-            }
-
-            try
-            {
-                _logger.Log(LogLevel.Information, "Trying to update");
-
-                _context.Update(User);
-                await _context.SaveChangesAsync();
-                return View("RegiResponse",User);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(User.UserId))
+                TempUser.CurrentWeight = (double)user.CurrentWeight;
+                TempUser.DesiredWeight = (double)user.DesiredWeight;
+                TempUser.Activity = user.ActivityLevel.ToString();
+                try
                 {
-                    return NotFound();
+                    _logger.Log(LogLevel.Information, "Trying to update");
+
+                    _context.Update(TempUser);
+                    await _context.SaveChangesAsync();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!UserExists(TempUser.UserId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
+                return View("RegiResponse", TempUser);
             }
-            return View(User);
+            return View();
         }
-
         public double CalculateBMR(User user)
         {
             if (user.Gender == "Male")
