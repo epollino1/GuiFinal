@@ -31,25 +31,43 @@ public class HomeController : Controller
             ViewData["UserName"] = user.Username;
             ViewData["WeightStart"] = user.StartingWeight;
             ViewData["WeightGoal"] = user.DesiredWeight;
+            ViewData["CaloriyLimit"] = user.CalorieLimit;
+
 
             WeightLog log = _context.WeightLogs.Where(a => a.UserId.Equals(user.UserId))
                                                 .OrderByDescending(a => a.LoggedAt)
                                                 .FirstOrDefault();
-            
+            DateTime today = DateTime.Today;
+
+            var caloryLogs = _context.CaloryLogs
+                .AsEnumerable()  // Switch to client-side evaluation
+                .Where(c => BitConverter.ToInt64(c.LoggedAt.Reverse().ToArray(), 0) > today.Ticks);
+
+
+
             if (log != null)
             {
                 ViewData["WeightCurr"] = log.CurrentWeight;
-
-                _logger.LogInformation(
-                    $"User: {ViewData["UserName"]}\n weight: {ViewData["WeightStart"]}\n goal: {ViewData["WeightGoal"]}");
-                    
+                _logger.LogInformation($"User: {ViewData["UserName"]}\n weight: {ViewData["WeightStart"]}\n goal: {ViewData["WeightGoal"]}");
             }
             else
             {
                 ViewData["ErrorMessage"] = "No weight log found for the user.";
                 _logger.LogError(ViewData["ErrorMessage"].ToString());
+            }
+
+            if (caloryLogs != null)
+            {
+                ViewData["CaloriysLoged"] = caloryLogs.Sum(a => a.Calories).ToString();
+                _logger.LogInformation($"There is {caloryLogs.Count()} calory logs at {ViewData["CaloriysLoged"]} calories" );
 
             }
+            else
+            {
+                _logger.LogError($"Failed to find calory logs");
+            }
+
+            
         }
         else
         {
