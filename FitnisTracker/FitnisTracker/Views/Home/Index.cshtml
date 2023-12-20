@@ -15,17 +15,16 @@
 <h1 class="display-4">Welcome, @ViewData["UserName"]</h1>
 <p>It's time to get fit</p>
 
-@{
-double weightGoal = 0;
+@{ 
+
+    double weightGoal = 0;
     double curWeight = 0;
-    double startWeight = 0;
-    try { startWeight = double.Parse(ViewData["WeightStart"] + ""); } catch { }
-    try { weightGoal = double.Parse(ViewData["WeightGoal"] + ""); } catch { }
+    try { weightGoal = double.Parse(ViewData["WeightGoal"] + "" ); } catch { }
     try { curWeight = double.Parse(ViewData["WeightCurr"] + ""); } catch { }
 
 
-if (startWeight <= 0)
-{
+    if (weightGoal <= 0)
+    {
         <div class="outline">
             <h2>Calibrate / Recalibrate your profile</h2>
             <a class="btn btn-secondary" href="/User/Registration">Recalibrate</a>
@@ -106,116 +105,66 @@ if (startWeight <= 0)
 
                 </div>
             </div>
+
+            <form method="post" asp-action="LogFood" asp-controller="WeightLog">
+                <div class="form-group">
+                    <label for="weight">Weight: </label>
+                    <input for="weight"
+                           name="weight"
+                           type="number"
+                           class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary dropRight">Update</button>
+                </div>
+            </form>
+        </div> @*End Weight Goal*@
+
+
+
+    }
+
 }
-else
-{
-    @*Weight Goal*@
-    <div class="outline">
 
-        <h2>Log Weight:</h2>
-        <h4>Weight Goal: @ViewData["WeightGoal"]</h4>
-        <h4>Current Weight: @ViewData["WeightCurr"]</h4>
+@{
+    var limit = 0;
+    var totalToday = 0;
 
-        @*Progress Bar*@
-            @{
-                if (weightGoal != null && weightGoal <= curWeight && startWeight >= weightGoal && weightGoal != 0)
-                {
-                    <div>
-                        <div class="progress">
-                            @{
-
-                            }
-                            <div class="progress-bar"
-                                 role="progressbar"
-                                 id="WeightProgress"
-                            @*style="width: 25%;"*@>
-                                25%
-                            </div>
-                            <script>
-                                let startWeight = parseFloat("@ViewData["WeightStart"]");
-                                let currWeight = parseFloat("@ViewData["WeightCurr"]");
-                                let goalWeight = parseFloat("@ViewData["WeightGoal"]");
-
-                                let percent = (currWeight - goalWeight) / (startWeight - goalWeight) * 100;
-                                percent = 100 - percent;
-                                percent = percent.toPrecision(4);
-                                let percentStr = percent + "%";
-                                let bar = document.getElementById("WeightProgress");
-                                bar.style.width = percentStr;
-                                bar.innerText = percentStr;
-
-                                console.log(startWeight);
-                                console.log(currWeight);
-                                console.log(goalWeight);
-
-                                if (isNaN(startWeight)) {
-                                    console.log('nan start ');
-                                    bar.style.width = '0%';
-                                    bar.innerText = '';
-                                } else if (isNaN(goalWeight)) {
-                                    console.log('nan goal weight');
-                                    bar.style.width = '0%';
-                                    bar.innerText = '';
-                                } else if (isNaN(currWeight)) {
-                                    console.log('cur weight is nan');
-                                    bar.style.width = '0%';
-                                    bar.innerText = '0%';
-                                }
-                            </script>
-
-                        </div>
-                    </div>
-                }
-            
-            }
-
-        <form>
-            <div class="form-group">
-                <label>Weight: </label>
-                <input asp-for="CurrentWeight" type="number"
-                        class="form-control" />
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary dropRight">Update</button>
-            </div>
-        </form>
-    </div> @*End Weight Goal*@
+    try { int.TryParse(ViewData["CaloriyLimit"].ToString(), out limit); } catch { }
+    try { int.TryParse(ViewData["CaloriysLoged"].ToString(), out totalToday); } catch { }
 
     @*Calorie Goal*@
-    <div class="outline form">
-        <h2>Log Food:</h2>
-        <h4>Calorie Goal: [Calorie Goal]</h4>
-        <h4>Current Count: [Today Total]</h4>
+<div class="outline form">
+    <h2>Log Food:</h2>
+    <h4>Calorie Goal: @ViewData["CaloriyLimit"]</h4>
+    @if (totalToday > 0)
+    {
+        <h4>Current Count: @ViewData["CaloriysLoged"]</h4>
 
         @*Progress Bar*@
         <div>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                <div class="progress-bar"
+                     role="progressbar"
+                     id="CaloryBar"
+                     aria-valuenow="25"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+
+                </div>
             </div>
         </div>
 
-        <form>
-            <div class="form-group">
-                <label>Food Item: </label>
-                <input class="form-control" />
-            </div>
-            <div class="form-group">
-                <label>Calories: </label>
-                <input type="number"
-                        class="form-control " />
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary dropRight">Submit</button>
-                <button class="btn btn-primary dropRight">Edit Logs</button>
-            </div>
-        </form>
-    </div>
+        <script>
+            let bar2 = document.getElementById("CaloryBar");
+            let calLimit = parseInt("@ViewData["CaloriyLimit"]");
+            let calLog = parseInt("@ViewData["CaloriysLoged"]");
 
             let percentNum = (calLog / calLimit * 100);
             percentNum = percentNum.toPrecision(4);
-            let percent = percentNum + "%";
-            bar.style.width = percent;
-            bar.innerText = percent;
+            let percent2 = percentNum + "%";
+            bar2.style.width = percent2;
+            bar2.innerText = percent2;
         </script>
     }
 
