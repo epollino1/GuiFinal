@@ -30,9 +30,7 @@ namespace FitnisTracker.Controllers
             {
                 return NotFound();
             }
-            var fitnisContext = _context.CaloryLogs.Include(c => c.User);
-            //fitnisContext = fitnisContext.Where(cl => cl.UserId.Equals(user.UserId));
-
+            var fitnisContext = _context.CaloryLogs.Include(c => c.User).Where(cl => cl.UserId.Equals(user.UserId));
             return View(await fitnisContext.ToListAsync());
         }
 
@@ -78,6 +76,22 @@ namespace FitnisTracker.Controllers
             }
             ViewData["UserId"] = new SelectList(_context.Users, "UserId", "UserId", caloryLog.UserId);
             return View(caloryLog);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateLog(String name, int cal)
+        {
+            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+            CaloryLog newLog = new CaloryLog();
+            newLog.UserId = CurrUser.UserId;
+            newLog.Id = 0;
+            try { newLog.Id = _context.WeightLogs.OrderByDescending(a => a.Id).First().Id + 1; } catch { }
+            newLog.Title = name;
+            newLog.Calories = cal;
+            _context.Add(newLog);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: CaloryLog/Edit/5
