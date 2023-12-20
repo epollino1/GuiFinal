@@ -207,19 +207,13 @@ namespace FitnisTracker.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registration(User User)
-        {
-
-
-
-            
-           
+        {           
             User.CalorieLimit = CalculateCalorieIntakeForWeightLoss(User);
 
             if (!ModelState.IsValid)
             {
                 return View(User);
             }
-
             try
             {
                 _logger.Log(LogLevel.Information, "Trying to update");

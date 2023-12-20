@@ -41,7 +41,17 @@
         consult with your doctor to confirm that you are elegable to loose
         weight. Practiceing weightloss can be dangerous for some people.)
     </p>
-    <button class="btn btn-primary">Login</button>
-    <button class="btn btn-primary">Signup</button>
+
+    <div>
+        <a class="nav-link d-inline-block" asp-area="Identity" asp-page="/Account/Login">
+            <button class="btn btn-primary">Login</button>
+        </a>
+
+        <a class="nav-link d-inline-block" asp-area="Identity" asp-page="/Account/Register">
+            <button class="btn btn-primary">Signup</button>
+        </a>
+    </div>
+
+
 
 </div>

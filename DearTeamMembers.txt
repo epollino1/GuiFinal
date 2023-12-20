@@ -1,7 +1,7 @@
 I am not very good at english, but i can handle the database part of the project - Dylan
-I also didnt look at anything on the asignment 
+I also didn't look at anything on the assignment 
 
-If someone wants to write tests, and we can summit them for cottrells assignment. dunno if thats acceptable but its a possablity. we obv dont have to do it.
+If someone wants to write tests, and we can summit them for Cottrell's assignment. dunno if thats acceptable but its a possibility. we obv don't have to do it.
 
 
 Amir - make the form page To let people register (Step 1 of Specific Requirements)

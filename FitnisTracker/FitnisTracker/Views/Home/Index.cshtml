@@ -1,4 +1,4 @@
-﻿
+﻿@model FitnisTracker.Models.User
 @{
 
     ViewData["Title"] = "Home Page";
@@ -31,7 +31,7 @@
     <form>
         <div class="form-group">
             <label>Weight: </label>
-            <input type="number"
+            <input asp-for="CurrentWeight" type="number"
                    class="form-control"/>
         </div>
         <div class="form-group">
