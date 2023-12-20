@@ -236,7 +236,7 @@ namespace FitnisTracker.Controllers
                 await _context.SaveChangesAsync();
 
 
-                CurrUser.CalorieLimit = CalculateCalorieIntakeForWeightLoss(CurrUser);
+                CurrUser.CalculateCalorieIntakeForWeightLoss();
                 _context.Update(user);
                 await _context.SaveChangesAsync();
             }
@@ -277,75 +277,6 @@ namespace FitnisTracker.Controllers
             return View(user);
         }
 
-        public double CalculateBMR(User user)
-        {
-            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
-            user.Age = CurrUser.Age;
-            user.HeightIn = CurrUser.HeightIn;
-            user.CurrentWeight = CurrUser.CurrentWeight;
-
-
-            if (user.Gender == "Male")
-            {
-                return 88.362 + (13.397 * (double)user.CurrentWeight) +
-                       (4.799 * (double)user.HeightIn) - (5.677 * (double)user.Age);
-            }
-            else if (user.Gender == "Female")
-            {
-                return 447.593 + (9.247 * (double)user.CurrentWeight) +
-                       (3.098 * (double)user.HeightIn) - (4.330 * (double)user.Age);
-            }
-            return 0;
-
-        }
-        public long CalculateCalorieIntakeForWeightLoss(User user)
-        {
-            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
-            user.Activity = CurrUser.Activity;
-
-            double bmr = CalculateBMR(user);
-            double calorieIntakeForWeightLoss;
-            double calorieDeficitPerDay;
-
-            double activityFactor = 1.0;
-            if (user.Activity == null)
-            {
-                activityFactor = 1.0;
-            }
-            else
-            {
-                switch (user.Activity.ToLower()) // Convert input to lowercase for easier comparison
-                {
-                    case "sedentary":
-                        activityFactor = 1.2;
-                        break;
-                    case "light":
-                        activityFactor = 1.375;
-                        break;
-                    case "moderate":
-                        activityFactor = 1.55;
-                        break;
-                    case "active":
-                        activityFactor = 1.725;
-                        break;
-                    case "veryactive":
-                        activityFactor = 1.9;
-                        break;
-                    case "extraactive":
-                        activityFactor = 2.0;
-                        break;
-                    default:
-                        activityFactor = 1.0; // base BMR
-                        break;
-                }
-
-            }
-
-            calorieDeficitPerDay = 2 * 7700 / 7; // 2 lbs = 7700 calories
-            calorieIntakeForWeightLoss = (bmr * activityFactor) - calorieDeficitPerDay;
-
-            return (long)calorieIntakeForWeightLoss;
-        }
     }
 
 
