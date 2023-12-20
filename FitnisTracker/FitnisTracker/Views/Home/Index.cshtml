@@ -20,15 +20,15 @@
 
     double weightGoal = 0;
     double curWeight = 0;
-    try { double.TryParse(ViewData["WeightGoal"].ToString(), out weightGoal); } catch { }
-    try { double.TryParse(ViewData["WeightCurr"].ToString(), out curWeight); } catch { }
+    try { weightGoal = double.Parse(ViewData["WeightGoal"] + ""); } catch { }
+    try { curWeight = double.Parse(ViewData["WeightCurr"] + ""); } catch { }
 
 
     if (weightGoal <= 0)
     {
         <div class="outline">
             <h2>Calibrate / Recalibrate your profile</h2>
-            <a class="btn btn-secondary" href="/User/Registration">Recalibrate</a>
+            <a class="btn btn-secondary" href="/User/Edit">Edit</a>
         </div>
     }
     else if (curWeight <= 0)
