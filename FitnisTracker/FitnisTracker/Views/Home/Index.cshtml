@@ -15,10 +15,12 @@
 <h1 class="display-4">Welcome, @ViewData["UserName"]</h1>
 <p>It's time to get fit</p>
 
-@{ 
+@{
 
     double weightGoal = 0;
     double curWeight = 0;
+    double startWeight = 0;
+    try { startWeight = double.Parse(ViewData["WeightStart"] + ""); } catch { }
     try { weightGoal = double.Parse(ViewData["WeightGoal"] + "" ); } catch { }
     try { curWeight = double.Parse(ViewData["WeightCurr"] + ""); } catch { }
 
@@ -50,7 +52,9 @@
     }
     else
     {
+    }
         @*Weight Goal*@
+        
         <div class="outline">
 
             <h2>Log Weight:</h2>
@@ -58,7 +62,8 @@
             <h4>Current Weight: @ViewData["WeightCurr"]</h4>
             <h4>Weight Goal: @ViewData["WeightGoal"]</h4>
 
-
+            @if (curWeight >= startWeight && curWeight <= weightGoal && weightGoal != null && weightGoal > 0)
+            {
             @*Progress Bar*@
             <div>
                 <div class="progress">
@@ -105,7 +110,7 @@
 
                 </div>
             </div>
-
+            }
             <form method="post" asp-action="LogFood" asp-controller="WeightLog">
                 <div class="form-group">
                     <label for="weight">Weight: </label>
