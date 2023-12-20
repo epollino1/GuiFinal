@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FitnisTracker.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace FitnisTracker.Controllers;
 
@@ -19,24 +20,35 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        _logger.LogInformation("\n\n\nDog Shit\n\n");
+
         User user = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
 
         if (user != null)
         {
+            _logger.LogInformation("\n\n\nUser Found\n\n");
+
+            ViewData["UserName"] = user.Username;
+            ViewData["WeightStart"] = user.StartingWeight;
+            ViewData["WeightGoal"] = user.DesiredWeight;
+
             WeightLog log = _context.WeightLogs.Where(a => a.UserId.Equals(user.UserId))
                                                 .OrderByDescending(a => a.LoggedAt)
                                                 .FirstOrDefault();
-
+            
             if (log != null)
             {
-                ViewData["UserName"] = user.Username;
-                ViewData["WeightStart"] = user.StartingWeight;
-                ViewData["WeightGoal"] = user.DesiredWeight;
                 ViewData["WeightCurr"] = log.CurrentWeight;
+
+                _logger.LogInformation(
+                    $"User: {ViewData["UserName"]}\n weight: {ViewData["WeightStart"]}\n goal: {ViewData["WeightGoal"]}");
+                    
             }
             else
             {
                 ViewData["ErrorMessage"] = "No weight log found for the user.";
+                _logger.LogError(ViewData["ErrorMessage"].ToString());
+
             }
         }
         else
