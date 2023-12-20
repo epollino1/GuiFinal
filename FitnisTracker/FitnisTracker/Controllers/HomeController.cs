@@ -56,47 +56,6 @@ public class HomeController : Controller
         //}
         return View();
     }
-    public IActionResult Registration()
-    {
-        return View();
-    }
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Registration(User user)
-    {
-        User Realuser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
-
-        Realuser.CurrentWeight = user.CurrentWeight;
-        Realuser.StartingWeight = user.StartingWeight;
-        Realuser.Activity = user.Activity;
-        Realuser.CalorieLimit = CalculateCalorieIntakeForWeightLoss(Realuser);
-
-        if (!ModelState.IsValid)
-        {
-
-            return View(user);
-        }
-        try
-        {
-            _logger.Log(LogLevel.Information, "Trying to update");
-
-            _context.Update(Realuser);
-            await _context.SaveChangesAsync();
-            return View("RegiResponse",Realuser);
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!UserExists(user.UserId))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
-        
-    }
 
 
     public IActionResult Privacy()
