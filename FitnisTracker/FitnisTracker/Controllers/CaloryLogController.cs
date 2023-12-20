@@ -86,7 +86,7 @@ namespace FitnisTracker.Controllers
             CaloryLog newLog = new CaloryLog();
             newLog.UserId = CurrUser.UserId;
             newLog.Id = 0;
-            try { newLog.Id = _context.WeightLogs.OrderByDescending(a => a.Id).First().Id + 1; } catch { }
+            try { newLog.Id = _context.CaloryLogs.OrderByDescending(a => a.Id).First().Id + 1; } catch { }
             newLog.Title = name;
             newLog.Calories = cal;
             _context.Add(newLog);
