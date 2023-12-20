@@ -295,7 +295,7 @@ namespace FitnisTracker.Controllers
                 return 447.593 + (9.247 * (double)user.CurrentWeight) +
                        (3.098 * (double)user.HeightIn) - (4.330 * (double)user.Age);
             }
-
+            return 0;
 
         }
         public long CalculateCalorieIntakeForWeightLoss(User user)
