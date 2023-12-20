@@ -6,7 +6,7 @@ namespace FitnisTracker.Models;
 
 public partial class User
 {
-   
+    
     public string UserId { get; set; } = null!;
     
     public string? Username { get; set; }

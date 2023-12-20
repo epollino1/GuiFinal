@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using FitnisTracker.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using System.Diagnostics;
 
 namespace FitnisTracker.Controllers
 {
@@ -121,6 +122,7 @@ namespace FitnisTracker.Controllers
                 user.Birthday = BitConverter.GetBytes(birthday.Ticks);
                 int age = CalculateAge(birthday);
                 user.Age = age;
+                
 
                 TempUser = user;
                 
@@ -210,15 +212,16 @@ namespace FitnisTracker.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registration([Bind("CurrentWeight,DesiredWeight,Activity")] UserModel user)
+        public async Task<IActionResult> Registration([Bind("CurrentWeight,DesiredWeight")] UserModel user, [Bind("ActivityLevel")] string Activity)
         {
             
+
 
             if (ModelState.IsValid)
             {
                 TempUser.CurrentWeight = (double)user.CurrentWeight;
                 TempUser.DesiredWeight = (double)user.DesiredWeight;
-                TempUser.Activity = user.ActivityLevel.ToString();
+                TempUser.Activity = Activity;
                 try
                 {
                     _logger.Log(LogLevel.Information, "Trying to update");

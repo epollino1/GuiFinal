@@ -1,7 +1,16 @@
 ﻿@model FitnisTracker.Models.UserModel
 @{
     ViewData["Title"] = "Recalibration Page";
-
+    List<string> ActivityLevel = new List<string>
+    {
+        "BasalMetabolicRate",
+        "Sedentary",
+        "Light",
+        "Moderate",
+        "Active",
+        "VeryActive",
+        "ExtraActive"
+    };
 }
 
 
@@ -35,15 +44,14 @@
                             <!--Activity Level-->
                             <div class="form-group">
                                 <label asp-for="ActivityLevel" class="control-label">Activity Level</label>
-                                <select asp-for="ActivityLevel"  class="form-control">
-                                    <option value="Empty">Select Activity Level</option>
-                                    @foreach (var activityLevel in Enum.GetValues(typeof(FitnisTracker.Models.FitnisActivity)))
+                                <select asp-for="ActivityLevel" class="form-control">
+                                    <option value="">Select Activity Level</option>
+                                    @foreach (var activityLevel in ActivityLevel)
                                     {
-                                        <option value="@activityLevel.ToString()">@Enum.GetName(typeof(FitnisTracker.Models.FitnisActivity), activityLevel)</option>
-                                    }
+                                        <option value="@activityLevel">@activityLevel</option>
                                     }
                                 </select>
-                                <span asp-validation-for="ActivityLevel" class="text-danger"></span>
+                                
                             </div>
 
                             <button type="submit" class="btn btn-primary">Calibrate</button>
