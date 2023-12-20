@@ -3,6 +3,7 @@
     ViewData["Title"] = "Recalibration Page";
     List<string> ActivityLevel = new List<string>
     {
+        "bmr",
         "BasalMetabolicRate",
         "Sedentary",
         "Light",
@@ -46,10 +47,13 @@
                                 <label asp-for="Activity" class="control-label">Activity Level</label>
                                 <select asp-for="Activity" class="form-control">
                                     <option value="">Select Activity Level</option>
-                                    @foreach (var activityLevel in ActivityLevel)
-                                    {
-                                        <option value="@activityLevel">@activityLevel</option>
-                                    }
+                                    <option value="bmr">BasalMetabolicRate</option>
+                                    <option value="sedentary">Sedentary</option>
+                                    <option value="light">Light</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="active">Active</option>
+                                    <option value="veryactive">VeryActive</option>
+                                    <option value="extraactive">ExtraActive</option>
                                 </select>
                                 <span asp-validation-for="Activity" class="text-danger"></span>
                             </div>

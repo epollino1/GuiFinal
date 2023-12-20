@@ -208,53 +208,45 @@ namespace FitnisTracker.Controllers
         }
 
 
+        //get
         public async Task<IActionResult> Registration()
         {
-            string userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-            if (_context.Users == null || userEmail == null)
-            {
-                _logger.Log(LogLevel.Error, "something is null");
-                return NotFound();
-            }
-            User user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
-
-            if (user == null)
-            {
-                _logger.LogError("No user found");
-                return NotFound();
-            }
-            return View(user);
+            return View();
         }
+        //post
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registration([Bind("StartingWeight,DesiredWeight,Activity")] User user)
         {
+
+            User CurrUser = _context.Users.FirstOrDefault(a => a.Email.Equals(User.Identity.Name));
+            CurrUser.StartingWeight = user.StartingWeight;
+            CurrUser.DesiredWeight = user.DesiredWeight;
+            CurrUser.Activity = user.Activity;
+            user = CurrUser;
+
             _logger.LogInformation(user.UserId);
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _logger.Log(LogLevel.Information, "Trying to update");
+                _logger.Log(LogLevel.Information, "Trying to update");
 
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.UserId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction("RegiResponse");
+                _context.Update(user);
+                await _context.SaveChangesAsync();
             }
-            _logger.LogError("Shits busted");
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!UserExists(user.UserId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction("RegiResponse");
 
-            return View();
+            //return View();
         }
 
         public IActionResult RegiResponse()
